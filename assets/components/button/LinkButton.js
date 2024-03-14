@@ -17,11 +17,12 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     marginBottom: 19,
+    
   },
   buttonText: {
     color: 'rgba(0,0,0,0.3)',
     fontSize: 12,
-    borderBottomWidth: 0.5,
+    borderBottomWidth: 0.6,
     borderColor: 'gray',
   },
 });

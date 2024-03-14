@@ -12,7 +12,7 @@ const styles = StyleSheet.create({
   logoTop: {
     width: 299,
     height: 157,
-    marginBottom: 146,
+    marginBottom: 100,
   },
   defaultInput: {
     width: 256,
