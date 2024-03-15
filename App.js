@@ -3,25 +3,29 @@ import React from 'react';
 import { View, Image, TextInput } from 'react-native';
 import styles from './assets/styles'; // Importe os estilos
 import Home from './pages/Home';
+import manDefault from './assets/Imgs/manDefault.png';
 
 const data = [
   {
     title: 'Uma Roupa de Qualidade Duvidosa',
-    price: '100',
+    price: '1070,50',
     rating: 4.5,
-    image: require('./assets/Imgs/manDefault.png')
+    reviews: 245,
+    image: manDefault,
   },
   {
     title: 'Product 2',
-    price: '200',
+    price: '200,78',
     rating: 4.2,
-    image: require('./assets/Imgs/manDefault.png'),
+    reviews: 245,
+    image: manDefault,
   },
   {
     title: 'Product 3',
-    price: '300',
+    price: '300,98',
     rating: 4.8,
-    image: require('./assets/Imgs/manDefault.png'),
+    reviews: 245,
+    image: manDefault,
   },
 ];
 
