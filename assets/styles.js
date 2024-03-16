@@ -34,7 +34,7 @@ const styles = StyleSheet.create({
   logoTop: {
     width: 299,
     height: 157,
-    marginBottom: 100,
+    marginBottom: 20,
   },
   defaultInput: {
     width: 256,
