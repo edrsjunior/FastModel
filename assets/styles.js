@@ -2,8 +2,13 @@
 import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
+  svg:{
+    width: 60,
+    height: 24,
+  },
+
   container: {
-    padding: 50,
+    paddingTop: 80,
     flex: 1,
     backgroundColor: '#fff',
     alignItems: 'center',
@@ -13,12 +18,16 @@ const styles = StyleSheet.create({
 
   navBar: {
     flexDirection: 'row',
-    marginBottom: 400,
+    justifyContent: 'space-between',
+    marginBottom: 200,
   },  
 
   logoNavBar: {
     width: 216,
     height: 89,
+    marginLeft: 50,
+    marginRight: 50,
+
   },
 
   logoTop: {
