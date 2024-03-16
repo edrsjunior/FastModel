@@ -17,6 +17,7 @@ const styles = StyleSheet.create({
   },
 
   navBar: {
+    position: 'fixed',
     flexDirection: 'row',
     justifyContent: 'space-between',
     marginBottom: 200,
