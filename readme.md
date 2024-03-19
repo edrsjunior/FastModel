@@ -37,3 +37,8 @@ npm start
 Technologies used in the project:
 
 *   REACT Native
+
+<h2>📱Algumas Capturas de Tela</h2>
+<img src="https://github.com/edrsjunior/FastModel/blob/master/Screenshots/Screenshot_Home.jpg" alt="project-screenshot" height="600">
+<img src="https://github.com/edrsjunior/FastModel/blob/master/Screenshots/Screenshot_Sign%20In.jpg" alt="project-screenshot" height="600">
+<img src="https://github.com/edrsjunior/FastModel/blob/master/Screenshots/Screenshot_Sign%20In2.jpg" alt="project-screenshot" height="600">
