@@ -6,6 +6,10 @@ const styles = StyleSheet.create({
     width: 60,
     height: 24,
   },
+  svgMenu:{
+    width: 30,
+    height: 30,
+  },
 
   container: {
     paddingTop: 80,
@@ -17,11 +21,21 @@ const styles = StyleSheet.create({
   },
 
   navBar: {
-    position: 'fixed',
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    marginBottom: 200,
+    width: '100%',
+    marginRight: 20,
+    zIndex: 1,
+    elevation: 4, // For Android
+    backgroundColor: 'transparent',
+ 
   },  
+
+  navBarContent:{
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    paddingHorizontal: 16,
+  },
+
 
   logoNavBar: {
     width: 216,
