@@ -61,6 +61,7 @@ const styles = StyleSheet.create({
   },
 
   content:{
+    marginTop: 8,
     flexDirection: 'row',
     justifyContent: 'space-between',
     marginleft: 0,
@@ -74,7 +75,7 @@ const styles = StyleSheet.create({
     
   },
   titleTxt: {
-    fontSize: 16,
+    fontSize: 20,
     fontWeight: 'regular',
     marginBottom: 5,
     // backgroundColor: 'red'
