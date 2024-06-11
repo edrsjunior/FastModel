@@ -56,7 +56,8 @@ const Cadastro = ({ navigation }) => {
 
       if (response.ok) {
         // Se a resposta da API for bem-sucedida, navegue para a próxima tela
-        navigation.navigate('CadastroEndereco');
+        const userId = response.id_Usuario;
+        navigation.navigate('CadastroEndereco', { userId: userId });
       } else {
         const errorData = await response.json();
         Alert.alert("Erro", errorData.message || "Erro ao cadastrar usuário");

@@ -29,9 +29,9 @@ export default function App() {
           component={Cadastro}
         />
 
-        <Stack.Screen
-          name='CadastroEndereco'
-          component={CadastroEndereco}
+        <Stack.Screen 
+        name="CadastroEndereco" 
+        component={CadastroEndereco} 
         />
 
         <Stack.Screen
