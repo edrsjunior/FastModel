@@ -16,17 +16,12 @@ const Login = ({ navigation }) => {
     
     try {
       //VALidar uRl
-      const response = await axios.get(`${NGROK_URL}/api/usuario/Login`,{
+      const response = await axios.get(`${NGROK_URL}/api/usuario/Login/{email}/{password}`,{
         email: email,
         senha: password
       });
       if (response.status === 200) {
-        // VERIFICAR SE RETORNOU TRUE
-        if(response.data){
           navigation.navigate('Home');
-        } else{
-          Alert.alert("Erro", "Usuário ou senha invalidos, tente novamente!");
-        }
 
       } else {
           // Tratar erros de cadastro de endereço
