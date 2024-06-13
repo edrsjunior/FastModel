@@ -40,7 +40,7 @@ const CadastroEndereco = ({ navigation, route }) => {
 
             if (response.status === 200) {
                 // Endereço cadastrado com sucesso
-                navigation.navigate('Home');
+                navigation.navigate('Login');
             } else {
                 // Tratar erros de cadastro de endereço
                 Alert.alert("Erro", "Erro ao cadastrar endereço");

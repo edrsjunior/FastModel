@@ -124,10 +124,8 @@ const Cadastro = ({ navigation }) => {
       />
 
       <LinkButton
-        title="Esqueci Minha Senha"
-        onPress={() => {
-          // Lógica para o botão de link "Esqueci Minha Senha"
-        }}
+        title="Voltar para o login"
+        onPress={() => navigation.navigate('Login')}
         style={styles.linkButton}
       />
     </View>

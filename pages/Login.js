@@ -1,11 +1,13 @@
 // App.js
 import React from 'react';
-import { View, Image, TextInput } from 'react-native';
+import { View, Image, TextInput, Alert } from 'react-native';
 import Button from '../assets/components/button/Button'; // Importe o componente de botão
 import LinkButton from '../assets/components/button/LinkButton';
 import styles from '../assets/styles'; // Importe os estilos
 import { useState } from 'react';
 import axios from 'axios';
+
+import { NGROK_URL } from '@env';
 
 const Login = ({ navigation }) => {
 
@@ -16,16 +18,14 @@ const Login = ({ navigation }) => {
     
     try {
       //VALidar uRl
-      const response = await axios.get(`${NGROK_URL}/api/usuario/Login/{email}/{password}`,{
-        email: email,
-        senha: password
-      });
-      if (response.status === 200) {
+      console.log(`${NGROK_URL}/api/usuario/Login/${email}/${password}`)
+      const response = await axios.get(`${NGROK_URL}/api/usuario/Login/${email}/${password}`);
+      if (response.status === 200 && response.data === true) {
           navigation.navigate('Home');
 
       } else {
           // Tratar erros de cadastro de endereço
-          Alert.alert("Erro", "Ocorreu um erro durante login, tente novamente mais tarde");
+          Alert.alert("Erro", "Usuário ou senha incorreto, tente novamente mais tarde");
       }
     } catch (error) {
       console.error(error);
@@ -46,7 +46,7 @@ const Login = ({ navigation }) => {
         style={styles.defaultInput}
         placeholder="seuemail@email.com"
         value={email}
-        onChange={(text) => setEmail(text)}
+        onChangeText={(text) => setEmail(text)}
       />
 
       <TextInput
@@ -54,7 +54,7 @@ const Login = ({ navigation }) => {
         placeholder="Password"
         secureTextEntry={true}
         value={password}
-        onChange={(text) => setPassword(text)}
+        onChangeText={(text) => setPassword(text)}
       />
 
       <Button
@@ -65,9 +65,7 @@ const Login = ({ navigation }) => {
 
       <LinkButton
         title="Faça seu Cadastro"
-        onPress={() => {
-          navigation.navigate('Cadastro');
-        }}
+        onPress={() => navigation.navigate('Cadastro')}
         style={styles.linkButton}
       />
     </View>

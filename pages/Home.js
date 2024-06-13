@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, StyleSheet, Image, TouchableOpacity, ScrollView } from 'react-native';
+import { View, Text, StyleSheet, Image, TouchableOpacity, ScrollView, Alert } from 'react-native';
 import ProductCard from '../assets/components/ProductCard';
 import TopPicks from '../assets/components/TopPicks';
 import styles from '../assets/styles'; // Importe os estilos;
@@ -8,23 +8,27 @@ import { Svg, Path } from 'react-native-svg';
 import Button from '../assets/components/button/Button';
 import axios from 'axios';
 
-const [dataProdutos, setDataProdutos] = useState([]);
+import { NGROK_URL } from '@env';
 
-const GetProdutos = async () => {
-  try {
-    const response = await axios.get(``);
-    setDataProdutos(response.data);
-  } catch (error) {
-    console.error("Erro ao obter produtos da API");
-    Alert.alert("Erro", "Erro ao baixar os produtos do catálogo, tente novamente mais tarde!");
-  }
-};
+const Home = ({navigation}) => {
+
+  const [dataProdutos, setDataProdutos] = useState([]);
+
+  const GetProdutos = async () => {
+    try {
+      const response = await axios.get(`${NGROK_URL}/api/Produto/Listar`);
+      setDataProdutos(response.data);
+      console.log('Produtos:', response.data)
+    } catch (error) {
+      console.error("Erro ao obter produtos da API");
+      Alert.alert("Erro", "Erro ao baixar os produtos do catálogo, tente novamente mais tarde!");
+    }
+  };
 
 useEffect(() => {
   GetProdutos();
 },[]);
 
-const Home = ({navigation}) => {
   return (
     
       <View style={styles.container}>
