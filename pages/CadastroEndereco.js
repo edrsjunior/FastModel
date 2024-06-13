@@ -5,6 +5,9 @@ import LinkButton from '../assets/components/button/LinkButton';
 import styles from '../assets/styles';
 import axios from 'axios';
 import { Svg, Path } from 'react-native-svg';
+import { NGROK_URL } from '@env';
+
+
 
 const getAddressByCEP = async (cep) => {
     try {
@@ -19,15 +22,17 @@ const getAddressByCEP = async (cep) => {
 const CadastroEndereco = ({ navigation, route }) => {
     const { userId } = route.params; // Obtém o ID do usuário passado como parâmetro
 
+    const [numero, setNumero] = useState(''); // Estado para o campo "Número"
     const [cep, setCEP] = useState('');
     const [address, setAddress] = useState(null);
 
     const handleCadastroEndereco = async () => {
         try {
-            const response = await axios.post('https://7087-191-253-1-156.ngrok-free.app/api/endereco/AdicionarEndereco', {
+            console.log('ID RECEBIDO: ',userId)
+            const response = await axios.post(`${NGROK_URL}/api/endereco/AdicionarEndereco`, {
                 CEP: cep,
                 Rua: address?.logradouro || '', // Acesso seguro ao logradouro do endereço
-                Numero: '', // Preencha com o número do endereço, se necessário
+                Numero: numero || '', // Preencha com o número do endereço, se necessário
                 Bairro: address?.bairro || '', // Acesso seguro ao bairro do endereço
                 Cidade: address?.localidade || '', // Acesso seguro à cidade do endereço
                 Id_Usuario: userId, // ID do usuário
@@ -92,7 +97,9 @@ const CadastroEndereco = ({ navigation, route }) => {
                 <TextInput
                     style={styles.defaultInput}
                     placeholder="Numero"
-                    // Se necessário, adicione a lógica para definir o número do endereço
+                    value={numero} // Definir o valor do TextInput
+                    onChangeText={(text) => setNumero(text)}
+                   
                 />
                 <TextInput
                     style={styles.defaultInput}
@@ -112,13 +119,6 @@ const CadastroEndereco = ({ navigation, route }) => {
                   style={styles.defaultButton}
               />
   
-              <LinkButton
-                  title="Esqueci Minha Senha"
-                  onPress={() => {
-                      // Lógica para o botão de link "Esqueci Minha Senha"
-                  }}
-                  style={styles.linkButton}
-              />
           </View>
       );
   };
