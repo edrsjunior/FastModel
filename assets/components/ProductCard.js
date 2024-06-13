@@ -2,27 +2,27 @@ import React from 'react';
 import { View, Text, Image, StyleSheet } from 'react-native';
 
 const ProductCard = ({ data }) => {
-  const { title, price, rating, reviews, image } = data;
+  const { id,nome, preco, rating, cont_Reviews, img_Url } = data;
   return (
     <>
 
     <View style={styles.card}>
       <View style={styles.containerImg}>
-        <Image source={image} style={styles.image} />
+        <Image source={{uri:img_Url}} style={styles.image} />
       </View>
 
       <View style={styles.content}>
         <View style={styles.title}>
-          <Text style={styles.titleTxt}>{title}</Text>
+          <Text style={styles.titleTxt}>{nome}</Text>
           </View>
             <View style={styles.contentPrice} >
-              <Text style={styles.price}>R$ {price}</Text>
+              <Text style={styles.price}>R$ {preco}</Text>
               <View style={styles.avalicao}>
                 <Text style={styles.rating}>
                   {rating} stars
                 </Text>
                 <Text style={styles.reviews}>
-                  {reviews} reviews
+                  {cont_Reviews} reviews
                 </Text>
               </View>
           </View>
@@ -54,10 +54,10 @@ const styles = StyleSheet.create({
   },
   image: {
     width: '100%',
-    height: '120%',
-    resizeMode: 'contain',
+    height: '100%', // or adjust as needed
+    resizeMode: 'cover', // adjust to 'contain' if needed
     alignSelf: 'center',
-    
+    borderRadius: 16, // match container's borderRadius if needed
   },
 
   content:{
