@@ -4,6 +4,9 @@ import Button from '../assets/components/button/Button';
 import LinkButton from '../assets/components/button/LinkButton';
 import styles from '../assets/styles';
 import { NavigationContainer } from '@react-navigation/native';
+import axios from 'axios';
+
+import { NGROK_URL } from '@env';
 
 const Cadastro = ({ navigation }) => {
   const [nome, setNome] = useState('');
@@ -44,24 +47,26 @@ const Cadastro = ({ navigation }) => {
       Data_Nascimento: dataNascimento,
       Senha: senha,
     };
-
+    console.log('DATANASC:', dataNascimento)
     try {
-      const response = await fetch('https://7087-191-253-1-156.ngrok-free.app/api/usuario/AdicionarUsuario', {
-        method: 'POST',
+      
+      const response = await axios.post(`${NGROK_URL}/api/usuario/AdicionarUsuario`, user, {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(user),
       });
-
-      if (response.ok) {
+      // console.log('RESPONSE',response.data.id_Usuario)
+      
+      
+      
+      if (response.status === 200) {
         // Se a resposta da API for bem-sucedida, navegue para a próxima tela
-        navigation.navigate('CadastroEndereco');
-      } else {
-        const errorData = await response.json();
-        Alert.alert("Erro", errorData.message || "Erro ao cadastrar usuário");
-      }
+        // const userIdResponse = response.data.id_Usuario;
+        const userIdResponse = response.data.id_Usuario
+        navigation.navigate('CadastroEndereco', { userId: userIdResponse });
+      } 
     } catch (error) {
+     
       console.error(error);
       Alert.alert("Erro", "Não foi possível se conectar ao servidor");
     }

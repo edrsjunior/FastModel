@@ -32,9 +32,9 @@ const Login = () => {
       />
 
       <LinkButton
-        title="Esqueci Minha Senha"
+        title="Cadastro"
         onPress={() => {
-          // Lógica para o botão de link "Esqueci Minha Senha"
+          // LEVAR PARA TELA DE CADASTRO"
         }}
         style={styles.linkButton}
       />
