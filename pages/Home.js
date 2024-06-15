@@ -1,43 +1,34 @@
-import React from 'react';
-import { View, Text, StyleSheet, Image, TouchableOpacity, ScrollView } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { View, Text, StyleSheet, Image, TouchableOpacity, ScrollView, Alert } from 'react-native';
 import ProductCard from '../assets/components/ProductCard';
 import TopPicks from '../assets/components/TopPicks';
 import styles from '../assets/styles'; // Importe os estilos;
 import Logo from '../assets/Imgs/Logo.png'
 import { Svg, Path } from 'react-native-svg';
 import Button from '../assets/components/button/Button';
+import axios from 'axios';
 
-//IMGS
-import bobojaRed from '../assets/Imgs/bobojacomasculinaRed.png';
-import bobojaWhite from '../assets/Imgs/bobojacobranco.png';
-import jaquetaJeansRasgada from '../assets/Imgs/jaqueta_jeans_city_com_rasgos.png';
+import { NGROK_URL } from '@env';
 
-const dataMockup = [
-  {
-    title: 'Boboja Vermelho',
-    price: '1070,50',
-    rating: 4.5,
-    reviews: 245,
-    image: bobojaRed,
-  },
-  {
-    title: 'Boboja Vermelho',
-    price: '1045,00',
-    rating: 4.2,
-    reviews: 245,
-    image: bobojaWhite,
-  },
-  {
-    title: 'Jaqueta Jeans Street',
-    price: '300,98',
-    rating: 4.8,
-    reviews: 245,
-    image: jaquetaJeansRasgada,
-  },
-];
+const Home = ({navigation}) => {
 
+  const [dataProdutos, setDataProdutos] = useState([]);
 
-const Home = ({ data , navigation}) => {
+  const GetProdutos = async () => {
+    try {
+      const response = await axios.get(`${NGROK_URL}/api/Produto/Listar`);
+      setDataProdutos(response.data);
+      console.log('Produtos:', response.data)
+    } catch (error) {
+      console.error("Erro ao obter produtos da API");
+      Alert.alert("Erro", "Erro ao baixar os produtos do catálogo, tente novamente mais tarde!");
+    }
+  };
+
+useEffect(() => {
+  GetProdutos();
+},[]);
+
   return (
     
       <View style={styles.container}>
@@ -59,7 +50,7 @@ const Home = ({ data , navigation}) => {
           </View>
         <ScrollView style={styles.content}>
 
-          {dataMockup.map((item, index) => (
+          {dataProdutos.map((item, index) => (
             <ProductCard key={index} data={item} />
           ))}
 
