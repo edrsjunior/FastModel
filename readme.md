@@ -21,14 +21,19 @@ https://docs.expo.dev/workflow/android-studio-emulator/#set-up-android-studios-t
 ```
 npm install
 ```
+<p>4. After all previously installations open the project them create a .env file with following var or replace API URls on code:</p>
 
-<p>4. Final step to run the project run:</p>
+```
+NGROK_URL
+```
+
+<p>5. Final step to run the project run:</p>
 
 ```
 npm start
 ```
 
-<p>5. Congratulations your project is running now you can use you AVD or your phone to test</p>
+<p>6. Congratulations your project is running now you can use you AVD or your phone to test</p>
 
   
   
