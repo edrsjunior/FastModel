@@ -21,7 +21,7 @@ https://docs.expo.dev/workflow/android-studio-emulator/#set-up-android-studios-t
 ```
 npm install
 ```
-<p>4. (OPTIONAL IF NEED TRY ON SEPARETED DEVICE WITH EXPO QR CODE)After all previously installations open the project them create a .env file with following var or replace API URls on code:</p>
+<p>4. (OPTIONAL IF NEED TRY ON SEPARETED DEVICE WITH EXPO QR CODE) After all previously installations open the project them create a .env file with following var or replace API URls on code:</p>
 
 ```
 NGROK_URL
